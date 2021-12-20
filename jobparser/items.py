@@ -7,6 +7,20 @@ import scrapy
 from itemloaders.processors import MapCompose, TakeFirst
 
 
+class InstaparserItem(scrapy.Item):
+    # define the fields for your item here like:
+    user_id = scrapy.Field()
+    username = scrapy.Field()
+    full_name = scrapy.Field()
+    photo = scrapy.Field()
+    owner_id = scrapy.Field()
+    search_type = scrapy.Field()
+
+
+"""
+Старый items к 7 уроку:
+"""
+
 def raw_into_str(raw_data):
     """Функция для очистки строк характеристик товара от лишних символов"""
     new_data = raw_data.strip('\n ')

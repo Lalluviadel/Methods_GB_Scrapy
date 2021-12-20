@@ -2,9 +2,11 @@ from scrapy.crawler import CrawlerProcess
 from scrapy.settings import Settings
 
 from jobparser import settings
-from jobparser.spiders.leroymerlin import LeroymerlinSpider
+from jobparser.database_requests import get_data
+from jobparser.spiders.instagram import InstagramSpider
 
 # import sys
+# from jobparser.spiders.leroymerlin import LeroymerlinSpider
 # from jobparser.spiders.hhru import HhruSpider
 # from jobparser.spiders.superjob import SuperjobSpider
 # from jobparser.spiders.labirint import LabirintSpider
@@ -15,12 +17,14 @@ if __name__ == '__main__':
     crawler_settings.setmodule(settings)
 
     process = CrawlerProcess(settings=crawler_settings)
-    process.crawl(LeroymerlinSpider, search='жидкие+обои')
+    process.crawl(InstagramSpider)
+    process.start()
+    get_data('2073401843')
+
+    # process.crawl(LeroymerlinSpider, search='жидкие+обои')
     # process.crawl(LeroymerlinSpider, search=sys.argv[1])
 
     # process.crawl(HhruSpider)
     # process.crawl(SuperjobSpider)
     # process.crawl(LabirintSpider)
     # process.crawl(Book24Spider)
-
-    process.start()
